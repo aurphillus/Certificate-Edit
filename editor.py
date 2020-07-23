@@ -21,11 +21,9 @@ def image_edit(original,basewidth,background,save_name):
         
         bg.paste(new_img,size)
         if os.path.exists(save_name):
-            print(f"File already exists: {save_name}")
+            pass
         else:
-            bg.save(save_name)
-            print(f"File saved at: {save_name}")
-            
+            bg.save(save_name)            
         return True
     
     except Exception as e:

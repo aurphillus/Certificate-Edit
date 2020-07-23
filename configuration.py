@@ -15,13 +15,16 @@ def create_config():
         "output": "output",
         "log": "logs",
         "default": "default",
-        "temporary": "temporary",
     }
     config['IMAGE'] = {
         'basewidth': 1276,
         'defaultbackground': 'transparent.png',
         'defaultbackgroundlink':'https://pasteboard.co/JiXOlCH.png'
     }
+    config['LOG'] = {
+        'filename': 'log.txt'
+    }
+    
     with open("config.ini","w") as configfile:
         config.write(configfile)
 
@@ -31,7 +34,7 @@ def load_config():
         config.read("config.ini")
         # Checking config     
         try: 
-            if config['PATH']['parentdirectory'] and config['EXTENSIONS']['acceptedextensions'] and config['DIRECTORY']['input'] and config['DIRECTORY']['output'] and config['DIRECTORY']['log'] and config['IMAGE']['basewidth'] and config['IMAGE']['defaultbackground'] and config['DIRECTORY']['DEFAULT'] and config['IMAGE']['defaultbackgroundlink']:
+            if config['PATH']['parentdirectory'] and config['EXTENSIONS']['acceptedextensions'] and config['DIRECTORY']['input'] and config['DIRECTORY']['output'] and config['DIRECTORY']['log'] and config['IMAGE']['basewidth'] and config['IMAGE']['defaultbackground'] and config['DIRECTORY']['DEFAULT'] and config['IMAGE']['defaultbackgroundlink'] and config['LOG']['filename']:
                 config={
                     'parentdirectory': config['PATH']['parentdirectory'],
                     'extensions': config['EXTENSIONS']['acceptedextensions'].split(','),
@@ -42,6 +45,7 @@ def load_config():
                     'transparentbackground': config['IMAGE']['defaultbackground'],
                     'default_directory': config['DIRECTORY']['default'],
                     'defaultbackgroundlink': config['IMAGE']['defaultbackgroundlink'],
+                    'logfile': config['LOG']['filename']
                 }
                 return config
             else:
