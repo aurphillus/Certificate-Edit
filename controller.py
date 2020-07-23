@@ -36,7 +36,7 @@ def controller():
     logging.info(f"checking for file: {config['transparentbackground']} to be present at {os.path.exists(os.path.join(config['default_directory']))}")
     if not os.path.exists(os.path.join(config['default_directory'],config['transparentbackground'])):
         logging.debug(f"{config['transparentbackground']} not found.")        
-        note = "Due to a problem in downloading images through python, please download the transparent image manually from the given link:\nhttps://github.com/aurphillus/Certificate-Edit/blob/master/transparent.png\nor\nhttps://pasteboard.co/JiXOlCH.png\nEnsure to name the file 'transparent.png' and place it under 'default' folder.\n"
+        note = "Due to a problem in downloading images through python, please download the transparent image manually from the given link:\nhttps://github.com/aurphillus/Certificate-Edit/blob/master/default/transparent.png\nEnsure to name the file 'transparent.png' and place it under 'default' folder.\n"
         print("You can find this message including the link at note.txt")
     
         with open('note.txt','w') as n:
