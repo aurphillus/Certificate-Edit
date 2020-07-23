@@ -1,0 +1,5 @@
+Due to a problem in downloading images through python, please download the transparent image manually from the given link:
+https://github.com/aurphillus/Certificate-Edit/blob/master/transparent.png
+or
+https://pasteboard.co/JiXOlCH.png
+Ensure to name the file 'transparent.png' and place it under 'default' folder.

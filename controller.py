@@ -2,6 +2,7 @@ import editor as ed
 import filehandling as fh
 import configuration as conf
 import os
+import progressbar
 #load configuration
 
 def controller():
@@ -33,8 +34,7 @@ def controller():
         return False
     
     print("#. Required dependencies check complete")
-    
-    print("####################")
+
     
     print("Place the images under ingest folder")
     print("When complete press Y to contine else press N to exit the program")
@@ -43,12 +43,14 @@ def controller():
     if value == 'Y' or value =='y' or value =='yes':
         try:
             files = fh.load_files(parent_directory=config['parentdirectory'],accepted_extensions=config['extensions'],path=config['input_directory'])
-            for file in files:
+            bar = progressbar.ProgressBar(maxval=len(files)-1).start()
+
+            for idx, file in enumerate(files):
                 file_split= file.split('\\')
                 file_name = file_split[-1]
                 # os.path.join(config['input_directory'],file)
                 edit_img = ed.image_edit(original=os.path.join(config['parentdirectory'],file),basewidth=int(config['basewidth']),background=os.path.join(config['parentdirectory'],config['default_directory'],config['transparentbackground']),save_name=os.path.join(config['parentdirectory'],config['output_directory'],file_name))
-                
+                bar.update(idx)
         except Exception as e:
             print(f"Exception occured {e}")
             return False
